@@ -1,0 +1,17 @@
+{
+    "name": "blanchar/capital",
+    "autoload": {
+        "psr-4": {
+            "Blanchar\\Capital\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "blancharSengaVita",
+            "email": "blanchar.senga-vita@student.hepl.be"
+        }
+    ],
+    "require": {
+        "php" : "^8.1"
+    }
+}
