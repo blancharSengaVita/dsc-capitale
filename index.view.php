@@ -14,12 +14,12 @@
 		<option value="">
 			Choisi un pays
 		</option>
-		<?php foreach ($countries as $key => $country): ?>
-			<option value="<?= $key?>" >
-				<?= mb_strtoupper($key) ?>
-			</option>`
-			<?php $countryName = $_GET['country'] ?>
+		<?php foreach($countries as $countryName => $countryInfos ): ?>
+			<option value="<?= urlencode($countryName) ?>">
+				<?= mb_strtoupper($countryName) ?>
+			</option>
 		<?php endforeach; ?>
+
 	</select>
 	<button type='submit'>
 		donne moi la capitale
@@ -27,21 +27,22 @@
 </form>
 
 
-<?php if (array_key_exists($countryName, $countries)): ?>
+
 <div>
 	<p>
-		<?= mb_ucfirst($countries[$countryName]['capital-name']) ?>
-	</p>
-	<img src="images/<?= $countryName ?>-flag-icon-256.png"
-		 alt="drapeau de ce pays : <?= mb_ucfirst($countryName) ?>">
-</div>
-<?php elseif ($countryName === ''): ?>
 
-<?php else: ?>
+	</p>
+	<img src="images/-flag-icon-256.png"
+		 alt="drapeau de ce pays : ">
+</div>
+
+
+<?php if(isset($erros['inexistant-country'])): ?>
 	<p>
-		erreur
+		<?=$erros['inexistant-country'] ?>
 	</p>
 <?php endif; ?>
+
 </body>
 </html>
 

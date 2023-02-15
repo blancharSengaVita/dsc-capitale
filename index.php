@@ -1,6 +1,6 @@
 <?php
 
-$countryName = '';
+
 $countries = [
 	'belgique' => [
 		'capital-name' => 'bruxelles',
@@ -19,8 +19,30 @@ $countries = [
 		'flag-file' => 'afrique du sud-flag-icon-256.png'
 	],
 ];
-function mb_ucfirst($string)
-{
-	return mb_strtoupper(mb_substr($string, 0, 1)).mb_substr($string, 1);
+
+//Description du test
+
+//On Détermine si $GET['country'] est déclarée et est différente de null / undefined
+//Si non on rentre pas dans le test. Si oui on rentre dedans.
+//Dedans on créer un variable $requestedCountry a qui on affect ce que vaut $_GET['country']
+
+// j'utilise pas urldecode car $_GET (et $_REQUEST) est déjà decodé et ça peut provoqué des bugs si on utilise la fonction
+//
+
+$requestedCountry = '';
+$countryInfos = '';
+$errors = [];
+
+if (isset($_GET['country'])){
+	$requestedCountry = $_GET['country'];
+	if(array_key_exists($requestedCountry,$countries)){
+		$countryInfos = $countries[$requestedCountry];
+	}else{
+		$errors['inexistant-country'] = 'ce pays n\'hesite pas dans nos lsites';
+	}
+
+
 }
+
+
 require "index.view.php";
